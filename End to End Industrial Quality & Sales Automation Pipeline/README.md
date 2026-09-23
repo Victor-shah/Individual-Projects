@@ -11,22 +11,22 @@ Below is the flowchart, and the step by step procedure to go through this projec
 
 We'll create a mock relational database representing a manufacturing plant using welding units.
 
-**Step 1**: Create a database and populate with dummy data. Execute 'database_setup.py' to create a localize SQLite database file with realistic telemetry data. It simulates voltage spikes, overheating, and normal operations.
+**Step 1**: Create a database and populate with dummy data. Execute '[database_setup.ipynb](database_setup.ipynb)' to create a localize SQLite database file with realistic telemetry data. It simulates voltage spikes, overheating, and normal operations.
 
 Below is the schema of the database. 
 
 <img width="978" height="150" alt="image" src="https://github.com/user-attachments/assets/12aa554a-1b28-4372-b6ff-d86116b4dacf" />
 
 
-After the execution, 'factory.db' database is created. 
+After the execution, '[factory.db](factory.db)' database is created. 
 
 ## Phase 2: Predictive AI & Anomaly Detection (Python)
 
 We query the SQL database and pass the raw features to an Isolation Forest Model. We use this model because its an industry-standard unsupervised machine learning model used extensively for sensor anomaly detection.
 
-**Step 1**: Execute the 'anomaly_detector.py' to query the SQL database and pass the raw features to the unsupervised machine learning model. 
+**Step 1**: Execute the '[anomaly_detector.ipynb](anomaly_detector.ipynb)' to query the SQL database and pass the raw features to the unsupervised machine learning model. 
 
-After the execution, we have a cleaned dataset 'output_insights.csv' ready to export for Power BI. Additionally, we prepared a lightweight structured JSON payload 'alerts_payload.json' for Power Automate. 
+After the execution, we have a cleaned dataset 'output_insights.csv' ready to export for Power BI. Additionally, we prepared a lightweight structured JSON payload '[alerts_payload.json](alerts_payload.json)' for Power Automate. 
 
 ## Phase 3: Executive Reporting (Power BI)
 
