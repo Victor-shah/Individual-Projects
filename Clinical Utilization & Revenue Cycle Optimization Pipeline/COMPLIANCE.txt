@@ -1,0 +1,21 @@
+### Data Governance, NABIDH Integration & Local UAE Compliance Manifest
+
+This project strictly adheres to the regulatory and data governance frameworks mandated by the **Dubai Health Authority (DHA)** and UAE Federal Laws regarding digital healthcare infrastructure. 
+
+### 1. UAE Health Data Residency Compliance
+
+In accordance with **UAE Federal Decree-Law No. 2 of 2019**, all health and patient-related data processed across this analytical pipeline is designed to be hosted locally. 
+
+* **Data Isolation:** No Personally Identifiable Information (PII) is exposed to external cloud training APIs.
+* **Anonymization Strategy:** Features such as Patient_ID undergo cryptographic hashing before machine learning feature engineering pipelines ingest the data.
+
+### 2. NABIDH Interoperability Framework
+
+To support seamless data exchange across Dubai's healthcare ecosystem, the transactional fact tables (fact_encounters) utilize standard nomenclature mapping ready for **HL7/FHIR v4 API integration**. 
+
+* **Clinical Mapping:** Diagnoses are stored as raw ICD-10 keys linking directly to semantic granular clinical descriptors (SNOMED CT).
+* **Billing Mapping:** Procedures performed at HealthHub facilities are verified against valid global CPT structural logs to ensure seamless validation against insurance clearinghouse protocols (e.g., e-Claim portals).
+
+### 3. Revenue Cycle Management (RCM) Quality Assurance
+
+The **Claim Denial Risk Engine** works as a pre-submission defensive screen. By validating CPT-to-ICD10 pairing weights locally, it reduces administrative overhead and matches local insurance compliance logic enforced by regional underwriters like Daman and AXA Gulf.
