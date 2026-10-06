@@ -1,8 +1,10 @@
 # End-to-End Clinical Utilization & Revenue Cycle Optimization Pipeline
 
 This project simulates an operational challenge a multi-specialty clinic network faces, that is, predicting patient "no-shows", optimizing clinic utilization, and tracking revenue leakage from rejected insurance claims. 
-
-[insert flowchart]
+<div align = "center"> <h3> Flow Chart</h3>
+<img width="652" height="477" alt="image" src="https://github.com/user-attachments/assets/61ff8c38-838c-4fe5-b0dd-4d8d5312c81c" /> </div>
+<br>
+<br>
 
 ## Phase 1: Synthesize and Model Healthcare-Compliant Data (Python)
 
