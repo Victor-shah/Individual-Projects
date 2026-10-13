@@ -1,8 +1,10 @@
 # Bilingual (English/Arabic) Enterprise Contract Intelligence & Compliance System
 
 This project handles unstructured data, utilizes advanced NLP/LLMs, and implements the use of a full MLOps deployment pipeline. Below is the architecture overview: 
-
-[insert the flowchart]
+<div align = "center"> <h3> Flow Chart</h3>
+<img width="893" height="653" alt="image" src="https://github.com/user-attachments/assets/303c019d-e375-4905-b66d-636d93fd2444" /></div>
+<br>
+<br>
 
 ## Phase 1: Data Engineering, Cleaning, and Vectorization 
 
@@ -18,21 +20,20 @@ Secondly, we load LaBSE (Language-Agnostic BERT Sentence Embedding). This pre-tr
 
 This is where we apply deep learning to solve a text-based business problem. The '[train_and_track.ipynb](train_and_track.ipynb)' script uses MLflow to track a sequence classification/NER task on clauses, registering parameters and performance outputs before production deployment. 
 
-[insert model run from MLflow] 
-
 This script is a Machine Learning experiment tracking pipeline using MLflow and Scikit-Learn. It simulates training a classification model to categorize compliance document clauses into two risk categories (0 for Low Risk, 1 for High Risk). 
 
 ## Phase 3: Production Deployment Service
 
 We're preparing a production-ready FastAPI application wrapper providing compliance evaluations using trained pipeline components. The script '[app.ipynb](app.ipynb)' sets up a REST API using FastAPI for evaluating risk in bilingual compliance documents. 
 
-[we show the interface and the execution]
-
 ## Phase 4: Containerized Deployment via REST API
 
 The system is fully containerized using Docker and exposes a production-ready REST API built with FastAPI. Navigate and execute this folder '[Dockerfile](Dockerfile)'. Once the container is running safely, open your web browser and navigate to "http://localhost:8000/docs". This launches the built-in **Swagger UI** dashboard for live endpoint testing. 
 
-[insert the UI]
+<div align = "center"> <h3> Swagger UI</h3>
+<img width="1840" height="923" alt="Screenshot 2026-10-13 163924" src="https://github.com/user-attachments/assets/05e50b02-b640-4e8e-936c-393d4103ead7" /> </div>
+<br>
+<br>
 
 Now, expand the 'Post /analyze' endpoint and click "Try it out".
 Paste the following bilingual structural JSON payload into the request body :
@@ -45,3 +46,7 @@ Paste the following bilingual structural JSON payload into the request body :
 ```
 
 Click "execute" and the system successfully applies Arabic normalization rules, extracts vector features, and returns a verified server response with a '200 OK' status.
+
+<div align = "center"> <h3> Output</h3>
+<img width="1603" height="333" alt="Screenshot 2026-10-13 164513" src="https://github.com/user-attachments/assets/4eb0e014-5232-4c0a-9c5a-335cdd2b727f" />
+</div>
