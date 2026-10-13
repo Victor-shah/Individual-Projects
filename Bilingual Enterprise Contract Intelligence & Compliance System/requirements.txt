@@ -1,0 +1,8 @@
+fastapi==0.110.0
+uvicorn==0.28.0
+pydantic==2.6.4
+sentence-transformers==2.5.1
+faiss-cpu==1.8.0
+scikit-learn==1.4.1.post1
+numpy==1.26.4
+mlflow==2.11.1
