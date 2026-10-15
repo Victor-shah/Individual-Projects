@@ -55,6 +55,7 @@ Now that our script outputs valid JSON to a webhook, we configure the visual wor
 <img width="928" height="362" alt="image" src="https://github.com/user-attachments/assets/314e472b-c985-40c7-bb38-e886fde94d10" /> </div>
 <br>
 <br>
+
 **1. The Trigger**: Custom Webhook Receiver
 <br>
 - Add a Webhook node to n8n canvas, and this node acts as our listener.
@@ -71,5 +72,15 @@ Now that our script outputs valid JSON to a webhook, we configure the visual wor
 <img width="1561" height="781" alt="image" src="https://github.com/user-attachments/assets/1e4b5da9-51a3-4dfb-b2e9-f91fab718cb8" /> </div>
 <br>
 <br>
+## Phase 4: Swagger UI testing control center
+
+We start our local sever instance after `python app/main.py` . After that we navigate to our local browser at `http://127.0.0`. This reveals the interactive Swagger testing control center. 
+
+<div align = "center"> <h3> Swagger UI </h3>
+<img width="902" height="826" alt="image" src="https://github.com/user-attachments/assets/de41631a-2be7-4869-a459-4f0036b1656a" /> </div>
+<br>
+
+Subsequently, `open the /api/v1/analyze-board` route block, click **Try it out**, drop an unstructured project description text file saved as a PDf, and click **Execute**. 
+
 
 
