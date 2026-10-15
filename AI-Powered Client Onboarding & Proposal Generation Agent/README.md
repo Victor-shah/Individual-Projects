@@ -17,7 +17,7 @@ Following phases are the step-by-step procedure to get started:
 
 Firstly, the libraries inside '[requirements.txt](requirements.txt)' cover the API stack, document handling and AI framing. 
 
-We'll use Pydantic to ensure our LLM reads unstructured text and structures it into a JSON format. The code '[schema.py](schema.py)' defines three distinct Pydantic models. They work like nesting dolls, where the smaller models are placed inside the larger one. 
+We'll use Pydantic to ensure our LLM reads unstructured text and structures it into a JSON format. The code '[schema.py](app/schema.py)' defines three distinct Pydantic models. They work like nesting dolls, where the smaller models are placed inside the larger one. 
 
 **1. TechnicalRequirement** (The Smallest Model) 
 <br>
@@ -41,11 +41,11 @@ This is the main container holding everything. It uses regular data types alongs
 - *core_features*: A list of FeatureItem objects.
 - *estimated_weeks*: A single integer representing the timeline.
 
-The '[config.py](config.py)' is the configuration python file. This establishes the connection to both open AI (gpt-4o-mini) and n8n workflow.
+The '[config.py](app/config.py)' is the configuration python file. This establishes the connection to both open AI (gpt-4o-mini) and n8n workflow.
 
-This '[ai_engine.py](ai_engine.py)' reads an uploaded raw PDf, extracts its text, and parses it into our structured data model using OpenAI's Structured Outputs feature.
+This '[ai_engine.py](app/ai_engine.py)' reads an uploaded raw PDf, extracts its text, and parses it into our structured data model using OpenAI's Structured Outputs feature.
 
-Finally, our API Endpoints and automation dispatcher '[main.py](main.py)' ties everything together. It hosts an endpoint to accept documents, runs the extraction, and instantly fires off the structured JSON payload to a low-code webhook. 
+Finally, our API Endpoints and automation dispatcher '[main.py](app/main.py)' ties everything together. It hosts an endpoint to accept documents, runs the extraction, and instantly fires off the structured JSON payload to a low-code webhook. 
 
 ## Phase 3: Low-Code Automation Design
 
@@ -72,6 +72,7 @@ Now that our script outputs valid JSON to a webhook, we configure the visual wor
 <img width="1561" height="781" alt="image" src="https://github.com/user-attachments/assets/1e4b5da9-51a3-4dfb-b2e9-f91fab718cb8" /> </div>
 <br>
 <br>
+
 ## Phase 4: Swagger UI testing control center
 
 We start our local sever instance after `python app/main.py` . After that we navigate to our local browser at `http://127.0.0`. This reveals the interactive Swagger testing control center. 
