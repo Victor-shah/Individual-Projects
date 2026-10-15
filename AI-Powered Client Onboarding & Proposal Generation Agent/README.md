@@ -8,6 +8,31 @@ Following phases are the step-by-step procedure to get started:
 
 ## Phase 1: Problem Definition & Architecture Design 
 
+### 1. Business Problem Sovlved
+This project automates the manual document triaging, extraction, and scope analysis phase traditionally required during B2B client onboarding. In an agency environment, incoming project briefs, RFPs, or inquiry documents are highly structured. Senior architects and business development teams spend hours reviewing files to map features and estimate delivery timelines. This pipeline solves: 
+1. **Time-to-Proposal Delays**
+2. **Human Error and Omissions**
+3. **High Operational Overhead**
+
+### 2. Architectural Choices and Decoupling strategy
+The system is built using a hybrid strategy that combines custom Python engineering with low-code flexibility. 
+| Component | Technology | Architectural Rationale |
+| :--- | :--- | :--- |
+| **API Entry Gateway** | `FastAPI` + `Uvicorn` | Provides asynchronous capabilities, minimal latency, and native support for background worker tasks. |
+| **Strict Data Contract** | `Pydantic` + OpenAI Structured Outputs | Guarantees **100% data compliance**. Prevents model hallucinations and ensures downstream automations never receive malformed JSON. |
+| **Integration Layer** | `Make.com` / `n8n` Webhooks | Decouples document formatting (Google Docs), CRM syncing, and team alerts (Slack) from the core Python codebase, allowing non-technical teams to edit templates easily. |
+| **Performance Buffer** | FastAPI `BackgroundTasks` | Fires outbound webhooks asynchronously so the frontend user receives an instant `200 OK` without waiting for third-party platforms to finish executing. |
+
+### 3. Fault Tolerance and Resiliency
+- **Input Guardrails**: Validates file signatures and text boundaries before calling external LLM APIs, preventing wasted token costs on empty or unreadable PDFs.
+- **Asynchronous Isolation**: Network issues, temporary outages or API caps on the low-code automation side will not block or hang the core client-facing API thread.
+
+### 4. Success and Performance Metrics
+- **Operational Velocity**: Turnaround time
+- **Downstream Pipeline Integrity**: 100% data validation success rate
+- **Cost Optimization**: Leveraging optimized structural logic (`gpt-4o-mini`)
+
+
 <div align = "center"> <h3>Process Flow </h3>
 <img width="1256" height="751" alt="image" src="https://github.com/user-attachments/assets/d2a32055-8b88-431b-8e7d-8cf138f5684a" /> </div>
 <br>
