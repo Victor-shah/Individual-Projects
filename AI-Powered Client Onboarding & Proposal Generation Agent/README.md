@@ -17,7 +17,7 @@ Following phases are the step-by-step procedure to get started:
 
 Firstly, the libraries inside '[requirements.txt](requirements.txt)' cover the API stack, document handling and AI framing. 
 
-We'll use Pydantic to ensure our LLM reads unstructured text and structures it into a JSON format. The code '[schema.py](app/schema.py)' defines three distinct Pydantic models. They work like nesting dolls, where the smaller models are placed inside the larger one. 
+We'll use Pydantic to ensure our LLM reads unstructured text and structures it into a JSON format. The code '[schemas.py](app/schemas.py)' defines three distinct Pydantic models. They work like nesting dolls, where the smaller models are placed inside the larger one. 
 
 **1. TechnicalRequirement** (The Smallest Model) 
 <br>
