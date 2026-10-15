@@ -8,7 +8,10 @@ Following phases are the step-by-step procedure to get started:
 
 ## Phase 1: Problem Definition & Architecture Design 
 
-[insert the flow chart]
+<div align = "center"> <h3>Process Flow </h3>
+<img width="1256" height="751" alt="image" src="https://github.com/user-attachments/assets/d2a32055-8b88-431b-8e7d-8cf138f5684a" /> </div>
+<br>
+<br>
 
 ## Phase 2: Core AI Processing Stack (Python & Custom Code)
 
@@ -16,24 +19,27 @@ Firstly, the libraries inside '[requirements.txt](requirements.txt)' cover the A
 
 We'll use Pydantic to ensure our LLM reads unstructured text and structures it into a JSON format. The code '[schema.py](schema.py)' defines three distinct Pydantic models. They work like nesting dolls, where the smaller models are placed inside the larger one. 
 
-1. TechnicalRequirement (The Smallest Model)
+**1. TechnicalRequirement** (The Smallest Model) 
+<br>
 This model structures a single technical need.
-- category: A string indicating where the tech belongs.
-- details: A string explaining the specific tech.
+- *category*: A string indicating where the tech belongs.
+- *details*: A string explaining the specific tech.
 
-2. FeatureItem
+**2. FeatureItem**
+<br>
 This model structures a single software feature.
-- name: The features' name.
-- description: What it does
-- estimated_complexity: A difficulty rating
+- *name*: The features' name.
+- *description*: What it does
+- *estimated_complexity*: A difficulty rating
 
-3. StructuredProjectBrief (The Master Model)
+**3. StructuredProjectBrief** (The Master Model)
+<br>
 This is the main container holding everything. It uses regular data types alongside lists.
-- client_name: A single string for the client's name.
-- project_goals: A standard Python list of strings for objectives.
-- technical_stack: A list of TechnicalRequirement ojbects.
-- core_features: A list of FeatureItem objects.
-- estimated_weeks: A single integer representing the timeline.
+- *client_name*: A single string for the client's name.
+- *project_goals*: A standard Python list of strings for objectives.
+- *technical_stack*: A list of TechnicalRequirement ojbects.
+- *core_features*: A list of FeatureItem objects.
+- *estimated_weeks*: A single integer representing the timeline.
 
 The '[config.py](config.py)' is the configuration python file. This establishes the connection to both open AI (gpt-4o-mini) and n8n workflow.
 
@@ -45,15 +51,25 @@ Finally, our API Endpoints and automation dispatcher '[main.py](main.py)' ties e
 
 Now that our script outputs valid JSON to a webhook, we configure the visual workflow inside n8n. To build this automation n8n, we'll create a 3-node linear workflow that captures incoming webhook data, generates a personalized document from a template, and broadcasts the completion message to the team.
 
-[insert workflow]
-
-1. The Trigger: Custom Webhook Reciever
+<div align = "center"> <h3> Workflow Automation</h3>
+<img width="928" height="362" alt="image" src="https://github.com/user-attachments/assets/314e472b-c985-40c7-bb38-e886fde94d10" /> </div>
+<br>
+<br>
+**1. The Trigger**: Custom Webhook Receiver
+<br>
 - Add a Webhook node to n8n canvas, and this node acts as our listener.
 
-2. The Action: Google Docs Template Generator
+**2. The Action**: Google Docs Template Generator
+<br>
 - Add a Google Docs node and connect it directly to our Webhook node.
 
-3. The Notification: Slack 
+**3. The Notification**: Slack 
+<br>
 - Add a Slack node and connect it to the output of the Google Docs node. 
 
-[insert alert notification]
+<div align = "center"> <h3>Team announcement on Slack triggered</h3>
+<img width="1561" height="781" alt="image" src="https://github.com/user-attachments/assets/1e4b5da9-51a3-4dfb-b2e9-f91fab718cb8" /> </div>
+<br>
+<br>
+
+
